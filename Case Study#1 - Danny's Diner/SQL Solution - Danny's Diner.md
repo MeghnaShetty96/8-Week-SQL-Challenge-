@@ -2,7 +2,7 @@ Case Study #1 - Danny's Diner
 Date - 19/02/2023
 Tools Used - PostgreSQL
 
-# Table Schema
+## Table Schema
 
 ```sql
 
@@ -60,7 +60,7 @@ VALUES
   ('B', '2021-01-09');
 ```
 
-# 1. What is the total amount each customer spent at the restaurant?
+### 1. What is the total amount each customer spent at the restaurant?
 ```sql
 SELECT sales.customer_id, SUM(price) AS Total_Amount
 FROM sales
@@ -70,7 +70,7 @@ GROUP BY sales.customer_id
 ORDER BY total_amount DESC
 ```
 
-# 2. How many days has each customer visited the restaurant?
+### 2. How many days has each customer visited the restaurant?
 ```sql
 SELECT customer_id, COUNT(DISTINCT(order_date)) AS number_of_visits
 FROM sales
@@ -79,7 +79,7 @@ ORDER BY number_of_visits DESC
 ```
 
 
-# 3. What was the first item from the menu purchased by each customer?
+### 3. What was the first item from the menu purchased by each customer?
 
 ```sql
 SELECT s.customer_id, MIN(order_date), m.product_name
@@ -91,7 +91,7 @@ ORDER BY s.order_date ASC
 LIMIT 4
 ```
 
-# 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 
 ```sql
 SELECT COUNT(sales.product_id) AS most_purchased, menu.product_name
@@ -104,7 +104,7 @@ LIMIT 1
 ```
 
 
-# 5. Which item was the most popular for each customer?
+### 5. Which item was the most popular for each customer?
 
 ```sql
 SELECT * FROM
@@ -120,7 +120,7 @@ GROUP BY menu.product_name, sales.customer_id) dbe) AS OP
 WHERE op.product_rank = 1
 ```
 
-# 6.  Which item was purchased first by the customer after they became a member?
+### 6.  Which item was purchased first by the customer after they became a member?
 
 ```sql
 SELECT * FROM
@@ -141,7 +141,7 @@ FROM
 WHERE op.rank = 1
 ```
 
-# 7. Which item was purchased just before the customer became a member?
+### 7. Which item was purchased just before the customer became a member?
 
 ```sql
 SELECT * FROM
@@ -162,7 +162,7 @@ FROM
 WHERE op.rank = 1
 ```
 
-# 8. What is the total items and amount spent for each member before they became a member?
+### 8. What is the total items and amount spent for each member before they became a member?
 
 ```sql
 SELECT  m.customer_id, COUNT(DISTINCT(s.product_id)), SUM(mn.price) as amt_spent
@@ -175,7 +175,7 @@ SELECT  m.customer_id, COUNT(DISTINCT(s.product_id)), SUM(mn.price) as amt_spent
 	GROUP BY m.customer_id
 ```
 	
-# 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```sql
 SELECT  s.customer_id,SUM(p.cust_points) as total_points
@@ -190,7 +190,7 @@ ORDER BY total_points DESC
 ```
 
 
-# 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+### 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```sql
 SELECT j_d.customer_id, SUM(cust_points)
@@ -210,9 +210,9 @@ GROUP BY 1
 ORDER BY 1
 ```
 
-# Bonus Questions
+## Bonus Questions
 
-# 11. The following questions are related creating basic data tables that Danny and his team can use to quickly derive insights without needing to join the underlying tables using SQL.Recreate the following table output using the available data:
+### 11. The following questions are related creating basic data tables that Danny and his team can use to quickly derive insights without needing to join the underlying tables using SQL.Recreate the following table output using the available data:
 
 ```sql
 SELECT s.customer_id, s.order_date, mn.product_name, mn.price,
@@ -227,7 +227,7 @@ LEFT JOIN members as me
 ON me.customer_id = s.customer_id
 ```
 
-# 12.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program. Let rank the table we just created.
+### 12.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program. Let rank the table we just created.
 
 ```sql
 SELECT *,
