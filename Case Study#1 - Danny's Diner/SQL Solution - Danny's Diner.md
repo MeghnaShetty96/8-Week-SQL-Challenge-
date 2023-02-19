@@ -227,7 +227,7 @@ LEFT JOIN members as me
 ON me.customer_id = s.customer_id
 ```
 
-### 12.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
+### 12. Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
 
 ```sql
 SELECT *,
