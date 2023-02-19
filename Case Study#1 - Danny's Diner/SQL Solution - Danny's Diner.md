@@ -212,7 +212,7 @@ ORDER BY 1
 
 ## Bonus Questions
 
-### 11. The following questions are related creating basic data tables that Danny and his team can use to quickly derive insights without needing to join the underlying tables using SQL.Recreate the following table output using the available data:
+### 11. The following questions are related to creating basic data tables that Danny and his team can use to quickly derive insights without needing to join the underlying tables using SQL.
 
 ```sql
 SELECT s.customer_id, s.order_date, mn.product_name, mn.price,
@@ -227,7 +227,7 @@ LEFT JOIN members as me
 ON me.customer_id = s.customer_id
 ```
 
-### 12.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program. Let rank the table we just created.
+### 12.Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
 
 ```sql
 SELECT *,
