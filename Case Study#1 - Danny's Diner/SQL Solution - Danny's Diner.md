@@ -3,12 +3,14 @@ Date - 19/02/2023
 Tools Used - PostgreSQL
 
 # 1. What is the total amount each customer spent at the restaurant?
+```sql
 SELECT sales.customer_id, SUM(price) AS Total_Amount
 FROM sales
 JOIN menu 
 ON sales.product_id = menu.product_id
 GROUP BY sales.customer_id
-ORDER BY total_amount DESC;
+ORDER BY total_amount DESC
+```
 
 # 2. How many days has each customer visited the restaurant?
 SELECT customer_id, COUNT(DISTINCT(order_date)) AS number_of_visits
